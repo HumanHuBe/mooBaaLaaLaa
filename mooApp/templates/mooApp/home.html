@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            height: 20vh;
+            background-color: aliceblue;
+        }
+
+        #logoname {
+            display: inline-block;
+            height: 12vh;
+            width: auto;
+            margin: 4vh 8vh;
+            background-color: aliceblue;
+        }
+
+        div#logo {
+            display: inline-block;
+            height: 12vh;
+            width: 12vh;
+            border-radius: 50%;
+            background-image: url("https://cdn.vectorstock.com/i/preview-1x/14/67/cute-cow-cartoon-eat-grass-vector-45811467.jpg");
+            background-size: cover;
+            margin-right: 2vh;
+        }
+
+        div#name {
+            height: auto;
+            width: auto;
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 1000;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: aliceblue;
+            vertical-align: middle;
+            margin-bottom: 10vh;
+        }
+
+
+        .horizontal-list {
+            list-style: none;
+            margin: 0px;
+            padding: 0%;
+        }
+
+        .horizontal-list li {
+            display: inline-block;
+            padding: 0px;
+            margin: 10px 45px 20px;
+            font-size: 25px;
+        }
+
+        .horizontal-list li a {
+            color: rgb(94, 94, 94);
+            text-decoration: none;
+        }
+
+        #navbar li a {
+            transition: color 0.2s, border-bottom 2s;
+        }
+
+        #navbar li a:hover {
+            color: rgb(0, 0, 0);
+            border-bottom: 1px solid black;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        #navbar {
+            display: inline-block;
+            margin: 0 8vh 0 60vh;
+            height: 100%;
+            vertical-align: middle;
+        }
+
+        main {
+            height: 80vh;
+            background-image: url("https://images.unsplash.com/photo-1589348792383-8ebcbec4ef88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #maindiv {
+            display: inline-block;
+            height: 80vh;
+            width: 100vw;
+            background-color: rgba(0, 0, 0, 0.6);
+            /* opacity: 0.6;  */
+            color: aliceblue;
+        }
+
+        #maindiv-text {
+            display: inline-block;
+            margin: 20vh 0 0 8vh;
+        }
+
+        #heading {
+            font-size: 3.5rem;
+            font-weight: 300;
+        }
+
+        #para {
+            margin-top: 4vh;
+            letter-spacing: 1px;
+            font-size: 1.5rem;
+            font-family: proxima-nova, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+        }
+
+        #contact-btn {
+            height: 7vh;
+            width: 21vh;
+            font-size: large;
+            font-weight: 300;
+            margin-top: 6vh;
+            letter-spacing: 1px;
+            border-radius: 10px;
+        }
+    </style>
+    <title>Moo Milk</title>
+</head>
+
+<body>
+    <header id="#">
+        <div id="logoname">
+            <div id="logo">
+
+            </div>
+            <div id="name">
+                MooMilk
+            </div>
+        </div>
+        <div id="navbar">
+            <ul class="horizontal-list text-center">
+                <li><a href="#"> SERVICES </a></li>
+                <li><a href="#"> OFFERS </a></li>
+                <li><a href="#"> CONTACT </a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div id="maindiv">
+            <div id="maindiv-text">
+                <h1 id="heading"> We Offer You 100% Pure
+                    <br />
+                    & Organic Cow-Milk
+                </h1>
+                <p id="para">
+                    Cows are given organic feed.
+                    <br />
+                    Cows are given periodic access to pasture.
+                    <br />
+                    Cows are not treated with supplemental hormones.
+                </p>
+                <button id="contact-btn"> CONTACT US</button>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>
