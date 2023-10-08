@@ -143,9 +143,13 @@
         </div>
         <div id="navbar">
             <ul class="horizontal-list text-center">
+                {% if user.is_authenticated %}
+                <li><form action="{% url 'logoutUser' %}" method="post"> {% csrf_token %} <button>LOGOUT</button></form></li>
+                {% else %}
+                <li><a href="{% url 'loginUser' %}"> LOGIN </a></li>
+                {% endif %}
+                <li><a href="#"> PRODUCTS </a></li>
                 <li><a href="#"> SERVICES </a></li>
-                <li><a href="#"> OFFERS </a></li>
-                <li><a href="#"> CONTACT </a></li>
             </ul>
         </div>
     </header>
