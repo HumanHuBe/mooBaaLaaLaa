@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
-
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .forms import ProfileForm
 from django.contrib.auth import login, logout, authenticate
 from .models import Profile
 from django.contrib.auth.decorators import login_required
+from .functions import addCode, sentMsg
+
 
 # Create your views here.
 def home(request):
@@ -64,13 +65,31 @@ def logoutUser(request):
 
 @login_required
 def verification(request):
-    if request.method == 'GET':
-        x = get_object_or_404(Profile, user=request.user)
-        if x.verified:
-            return redirect('home')
-        else:
+    x = get_object_or_404(Profile, user=request.user)
+    if x.verified:
+       return redirect('home')
+    else:
+        if request.method == 'GET':
+            addCode(x)
+            sentMsg(x)
             return render(request, 'mooApp/verification.html')
+        elif request.method == 'POST':
+            if request.POST['otp'] == x.code:
+                x.verified = True
+                x.save()
+                return redirect('products')
+            else:
+                addCode(x)
+                print('code changed')
+                sentMsg(x)
+                return render(request, 'mooApp/verification.html', {'error':'Entered OTP did not match, kindly re-enter the correct OTP'})
+        else:
+            return HttpResponse("Forbidden")
         
 
 def products(request):
-    pass
+    x = get_object_or_404(Profile, user=request.user)
+    if x.verified:
+        return render(request, 'mooApp/products.html')
+    else:
+        return redirect('verification')

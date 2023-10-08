@@ -1,11 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'mooApp/main.css' %}">
     <title>Document</title>
 </head>
 <body>
     <h1>VERIFICATION</h1>
+    <form action="{% url 'verification' %}" method="post">
+        {% csrf_token %}
+        {% if error %}
+        <div class="errorlist">
+            {{ error }}
+        </div>
+        {% endif %}
+        <input type="text" name="otp" placeholder="Enter the OTP sent on your Mobile number" style="width: 100%;"> <br>
+        <button type="submit">Submit OTP</button>
+    </form>
 </body>
 </html>

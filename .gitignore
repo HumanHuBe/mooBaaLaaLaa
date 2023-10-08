@@ -5,3 +5,4 @@ migrations/
 static/
 .venv
 db.sqlite3
+secrets.py
