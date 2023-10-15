@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .forms import ProfileForm
 from django.contrib.auth import login, logout, authenticate
-from .models import Profile
+from .models import Profile, Category, SubCategory, Products
 from django.contrib.auth.decorators import login_required
 from .functions import addCode, sentMsg
 
@@ -87,9 +87,21 @@ def verification(request):
             return HttpResponse("Forbidden")
         
 
+@login_required
 def products(request):
     x = get_object_or_404(Profile, user=request.user)
     if x.verified:
-        return render(request, 'mooApp/products.html')
+        category = Category.objects.all()
+        product_list = []
+        for i in category:
+            product_list.append([i])
+            pass
+        for i in product_list:
+            i.append([[j] for j in SubCategory.objects.filter(product_category=i[0])])
+        for i in product_list:
+            for j in i[1]:
+                j.append([k for k in Products.objects.filter(product_sub_category=j[0])])
+        print(product_list)
+        return render(request, 'mooApp/products.html', {'products':product_list}) 
     else:
         return redirect('verification')

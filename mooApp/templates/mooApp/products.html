@@ -1,11 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'mooApp/main.css' %}">
     <title>Document</title>
 </head>
 <body>
-    Products
+
+    
+    
+    {% for i in products %}
+    {% for j in i %}
+    {% if forloop.first %}
+    <h1>{{ j }}</h1><span>-----------NEW LINE-------------</span> <br>
+    {% else %}
+    {% for k in j %}
+    {% for l in k %}
+    {% if forloop.first %}
+    <h4>{{ l }}</h4><span>--NEW LINE--</span> <br>
+    {% else %}
+    {% for m in l %}
+    {{ m.product_name }}<br>
+    Price : {{ m.product_price }} INR <br>
+    <img src="{{ m.product_image.url }}" alt="{{ m.product_name }}'s Image" width="200px"> <br>
+    <span>----</span> <br>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %} 
+    {% endfor %} 
+    
+
+
 </body>
 </html>
